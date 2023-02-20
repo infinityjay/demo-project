@@ -27,3 +27,6 @@ func BenchmarkSprintfConcat(b *testing.B) { benchmark(b, sprintfConcat) }
 func BenchmarkBuilderConcat(b *testing.B) { benchmark(b, builderConcat) }
 func BenchmarkBufferConcat(b *testing.B)  { benchmark(b, bufferConcat) }
 func BenchmarkByteConcat(b *testing.B)    { benchmark(b, byteConcat) }
+
+// test with following commands:
+// go test -bench="Concat$" -benchmem .
