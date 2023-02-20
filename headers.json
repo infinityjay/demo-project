@@ -1,0 +1,214 @@
+{
+  "pageOne": [
+    {
+      "label": "名称",
+      "value": "component",
+      "disabled": true,
+      "checked": true
+    },
+    {
+      "label": "所属集群",
+      "value": "cluster",
+      "disabled": false,
+      "checked": true
+    },
+    {
+      "label": "服务类型",
+      "value": "namespace",
+      "disabled": false,
+      "checked": true
+    },
+    {
+      "label": "用途",
+      "value": "description",
+      "disabled": false,
+      "checked": true
+    },
+    {
+      "label": "状态",
+      "value": "stat",
+      "disabled": false,
+      "checked": true
+    },
+    {
+      "label": "实例状态",
+      "value": "pod_stat",
+      "disabled": false,
+      "checked": true
+    },
+    {
+      "label": "构建版本",
+      "value": "build_version",
+      "disabled": false,
+      "checked": true
+    },
+    {
+      "label": "构建标识",
+      "value": "build_info",
+      "disabled": false,
+      "checked": false
+    },
+    {
+      "label": "构建时间",
+      "value": "build_time",
+      "disabled": false,
+      "checked": false
+    },
+    {
+      "label": "操作",
+      "value": "operation",
+      "disabled": true,
+      "checked": true
+    }
+  ],
+  "pageTwo": [
+    {
+      "label": "服务",
+      "value": "component",
+      "disabled": false,
+      "checked": true
+    },
+    {
+      "label": "集群",
+      "value": "cluster",
+      "disabled": false,
+      "checked": false
+    },
+    {
+      "label": "服务类型",
+      "value": "namespace",
+      "disabled": false,
+      "checked": false
+    },
+    {
+      "label": "时间",
+      "value": "time",
+      "disabled": true,
+      "checked": true
+    },
+    {
+      "label": "等级",
+      "value": "level",
+      "disabled": false,
+      "checked": true
+    },
+    {
+      "label": "实例",
+      "value": "pod",
+      "disabled": false,
+      "checked": false
+    },
+    {
+      "label": "节点",
+      "value": "node",
+      "disabled": false,
+      "checked": false
+    },
+    {
+      "label": "日志信息",
+      "value": "message",
+      "disabled": false,
+      "checked": true
+    },
+    {
+      "label": "操作",
+      "value": "operation",
+      "disabled": true,
+      "checked": true
+    }
+  ],
+  "pageThree": [
+    {
+      "label": "服务",
+      "value": "component",
+      "disabled": false,
+      "checked": true
+    },
+    {
+      "label": "服务类型",
+      "value": "namespace",
+      "disabled": false,
+      "checked": false
+    },
+    {
+      "label": "操作",
+      "value": "operation",
+      "disabled": true,
+      "checked": true
+    },
+    {
+      "label": "时间",
+      "value": "time",
+      "disabled": true,
+      "checked": true
+    },
+    {
+      "label": "实例",
+      "value": "pod",
+      "disabled": false,
+      "checked": true
+    },
+    {
+      "label": "信息",
+      "value": "message",
+      "disabled": false,
+      "checked": true
+    },
+    {
+      "label": "类型",
+      "value": "type",
+      "disabled": false,
+      "checked": true
+    },
+    {
+      "label": "原因",
+      "value": "reason",
+      "disabled": false,
+      "checked": false
+    },
+    {
+      "label": "来源",
+      "value": "source",
+      "disabled": false,
+      "checked": true
+    }
+  ],
+  "pageFour": [
+    {
+      "label": "时间",
+      "value": "time",
+      "disabled": true,
+      "checked": true
+    },
+    {
+      "label": "实例",
+      "value": "pod",
+      "disabled": false,
+      "checked": true
+    },
+    {
+      "label": "信息",
+      "value": "message",
+      "disabled": false,
+      "checked": true
+    },
+    {
+      "label": "类型",
+      "value": "type",
+      "disabled": false,
+      "checked": true
+    },
+    {
+      "label": "原因",
+      "value": "reason",
+      "disabled": false,
+      "checked": false
+    },
+    {
+      "label": "来源",
+      "value": "source",
+      "disabled": false,
+      "checked": true
+    }
+  ]
+}
