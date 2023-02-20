@@ -1,0 +1,123 @@
+#!/usr/bin/env php
+<?php
+$usage = "usage:\n\t" . $argv[0] . " <path_to_json_file>\n\t<pipe_json_string> | " . $argv[0] . " -\n";
+
+function from_camel_case($input) {
+  preg_match_all('!([A-Z][A-Z0-9]*(?=$|[A-Z][a-z0-9])|[A-Za-z][a-z0-9]+)!', $input, $matches);
+  $ret = $matches[0];
+  foreach ($ret as &$match) {
+    $match = $match == strtoupper($match) ? strtolower($match) : lcfirst($match);
+  }
+  return implode('_', $ret);
+}
+
+function toCamelCase($words, $diff = true, $separator = '_')
+{
+    $split_words = str_replace($separator, " ", strtolower($words));
+    $camel_words = str_replace(" ", "", ucwords($split_words));
+    if ($diff && $words == $camel_words) {
+        return $camel_words . 'T';
+    }
+    return $camel_words;
+}
+
+if ($argc == 1) {
+    die($usage);
+} elseif ($argv[1] == '-') {
+    stream_set_blocking(STDIN, true);
+    $data = stream_get_contents(STDIN) or die($usage);
+    $name = 'Foobar';
+} else {
+    $file = fopen($argv[1], 'r') or die('read file ' . $argv[1] . " fail\n");
+    $data = fread($file, filesize($argv[1]));
+    $name = toCamelCase(str_split(basename($argv[1]))[0], false);
+}
+
+
+
+$json = json_decode($data) or die('parse input data fail');
+
+echo 'message ' . $name . " {\n";
+parseJson($json, '    ');
+echo "}\n";
+
+
+
+function parseJson($obj, $prefix, $blank_line = true)
+{
+    $count = 0;
+    foreach ($obj as $key => $val) {
+        $key=from_camel_case($key);
+        $count++;
+        switch (gettype($val)) {
+            case 'boolean':
+                echo $prefix . 'bool ' . $key . ' = ' . $count . ";\n";
+                break;
+
+            case 'integer':
+                echo $prefix . 'int64 ' . $key . ' = ' . $count . ";\n";
+                break;
+
+            case 'double':
+                echo $prefix . 'double ' . $key . ' = ' . $count . ";\n";
+                break;
+
+            case 'string':
+                echo $prefix . 'string ' . $key . ' = ' . $count . ";\n";
+                break;
+
+            case 'NULL':
+                echo $prefix . 'google.protobuf.Any ' . $key . ' = ' . $count . ";\n";
+                break;
+
+            case 'array':
+                switch (gettype($val[0])) {
+                    case 'boolean':
+                        echo $prefix . 'repeated bool ' . $key . ' = ' . $count . ";\n";
+                        break;
+
+                    case 'integer':
+                        echo $prefix . 'repeated int64 ' . $key . ' = ' . $count . ";\n";
+                        break;
+
+                    case 'double':
+                        echo $prefix . 'repeated double ' . $key . ' = ' . $count . ";\n";
+                        break;
+
+                    case 'string':
+                        echo $prefix . 'repeated string ' . $key . ' = ' . $count . ";\n";
+                        break;
+
+                    case 'NULL':
+                        echo $prefix . 'repeated google.protobuf.Any ' . $key . ' = ' . $count . ";\n";
+                        break;
+
+                    default:
+                        if ($blank_line) {
+                            echo "\n";
+                        };
+                        echo  $prefix . 'message ' . toCamelCase($key) . " {\n";
+                        parseJson($val[0], '    ' . $prefix, false);
+                        echo $prefix . "}\n";
+                        echo $prefix . 'repeated ' . toCamelCase($key) . ' ' . $key . ' = ' . $count . ";\n";
+                        echo "\n";
+                        break;
+                }
+                break;
+
+            case 'object':
+                if ($blank_line) {
+                    echo "\n";
+                };
+                echo  $prefix . 'message ' . toCamelCase($key) . " {\n";
+                parseJson($val, '    ' . $prefix, false);
+                echo $prefix . "}\n";
+                echo $prefix . toCamelCase($key) . ' ' . $key . ' = ' . $count . ";\n";
+                echo "\n";
+                break;
+
+            default:
+                break;
+        }
+    }
+}
