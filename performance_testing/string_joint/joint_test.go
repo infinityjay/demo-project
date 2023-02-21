@@ -30,3 +30,5 @@ func BenchmarkByteConcat(b *testing.B)    { benchmark(b, byteConcat) }
 
 // test with following commands:
 // go test -bench="Concat$" -benchmem .
+// go test -bench="." -benchmem
+// go test -bench=.
