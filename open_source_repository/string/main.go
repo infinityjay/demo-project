@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"sort"
 )
 
 var chartExportMap = map[string]string{
@@ -39,22 +38,37 @@ var chartExportMap = map[string]string{
 }
 
 func main() {
-	ids := []string{"001002", "003001", "001001", "002003", "000000"}
-	for _, id := range ids {
-		fmt.Println(id[0:3])
-	}
-	sort.Slice(ids, func(i, j int) bool {
-		if ids[i] < ids[j] {
-			return true
+	getSuffix("ima.ge.png")
+	//ids := []string{"001002", "003001", "001001", "002003", "000000"}
+	//for _, id := range ids {
+	//	fmt.Println(id[0:3])
+	//}
+	//sort.Slice(ids, func(i, j int) bool {
+	//	if ids[i] < ids[j] {
+	//		return true
+	//	}
+	//	return false
+	//})
+	//fmt.Println(ids)
+	//
+	//var array = make([]string, 1)
+	//array[0] = "第一行"
+	//array = append(array, "dierhang")
+	//fmt.Println(array)
+	//
+	//fmt.Println(ids[:3])
+}
+
+func getSuffix(fileName string) {
+	imageType := "jpg"
+	if len(fileName) > 0 {
+		i := len(fileName) - 1
+		for ; i >= 0; i-- {
+			if fileName[i] == '.' {
+				break
+			}
 		}
-		return false
-	})
-	fmt.Println(ids)
-
-	var array = make([]string, 1)
-	array[0] = "第一行"
-	array = append(array, "dierhang")
-	fmt.Println(array)
-
-	fmt.Println(ids[:3])
+		imageType = fileName[i+1:]
+	}
+	fmt.Println(imageType)
 }
