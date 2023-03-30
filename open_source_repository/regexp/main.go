@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"strings"
 )
 
 func main() {
@@ -13,4 +14,8 @@ func main() {
 	for _, match := range matches {
 		fmt.Println(match[1])
 	}
+	oldImgList := []string{}
+	oldImgList = strings.Split("", ";")
+	fmt.Println(oldImgList[0])
+	fmt.Println(len(oldImgList))
 }
