@@ -28,6 +28,8 @@ require (
 	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/google/gofuzz v1.1.0 // indirect
 	github.com/imdario/mergo v0.3.6 // indirect
+	github.com/jinzhu/inflection v1.0.0 // indirect
+	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
@@ -67,12 +69,14 @@ require (
 )
 
 require (
-	github.com/go-sql-driver/mysql v1.6.0
+	github.com/go-sql-driver/mysql v1.7.0
 	github.com/gorilla/websocket v1.5.0
 	github.com/leekchan/accounting v1.0.0
 	github.com/rs/zerolog v1.27.0
 	github.com/tealeg/xlsx v1.0.5
 	github.com/tidwall/gjson v1.14.4
+	gorm.io/driver/mysql v1.5.0
+	gorm.io/gorm v1.25.1
 	k8s.io/api v0.26.1
 	k8s.io/client-go v0.26.1
 	xorm.io/xorm v1.3.2
