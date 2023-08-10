@@ -140,4 +140,8 @@ func main() {
 	fmt.Printf("firstOfMonth: %v\n", firstOfMonth)
 	monthStartTime := time.Date(now.Year(), now.Month()-time.Month(1), 1, 0, 0, 0, 0, currentLocation)
 	fmt.Printf("monthStartTime: %v\n", monthStartTime)
+
+	endTime := firstOfLastMonth.AddDate(0, 1, 0).Format("2006-01-02 15:04:05")
+	fmt.Println("startTime: ", firstOfLastMonth)
+	fmt.Println("endTime: ", endTime)
 }
